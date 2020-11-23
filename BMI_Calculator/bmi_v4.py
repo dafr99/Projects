@@ -4,12 +4,12 @@ Created on 23.11.2020
 @author: dafr
 """
 # Program calculates BMI based on input
-# Gives warning in case the BMI is too low or too high
+# Gives a warning in case the BMI is too low or too high
 
 import tkinter
+import tkinter.messagebox
 
 root = tkinter.Tk()
-root.geometry("200x100")
 root.title("BMI Calculator")
 
 # Functions
@@ -20,11 +20,8 @@ def calculate_bmi():
     bmi = round(kg / (height ** 2), 2)
     label_result["text"] = f"BMI: {bmi}"
     if bmi>30 or bmi<18.5:
-        label_advice["text"] = "Your health is in danger.\n You should consult a doctor!"
-
-    else:
-        label_advice["text"] = "Your BMI is normal"
-
+        tkinter.messagebox.showwarning(title="Warning!", message="Your health is in danger.\nYou should consult a doctor!")
+    
 
 # Create GUI
 label_kg = tkinter.Label(root, text= "KG: ")
@@ -44,11 +41,5 @@ button_calculate.grid(column=0, row=2)
 
 label_result = tkinter.Label(root, text= "BMI: ")
 label_result.grid(column=1, row=2)
-
-label_comment = tkinter.Label(root, text= "Comment: ")
-label_comment.grid(column=0, row=3)
-
-label_advice = tkinter.Label(root, text="")
-label_advice.grid(column=1, row=3)
 
 root.mainloop()
