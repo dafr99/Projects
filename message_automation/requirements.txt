@@ -1,0 +1,2 @@
+schedule==0.6.0
+twilio==6.48.0
